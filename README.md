@@ -44,45 +44,60 @@ If the data bit D is low, the output Y1 is low. IF data bit D is high, the outpu
 
 If the control input changes to AB = 10, then all the gates are restricted except the third AND gate from the top. Then, data bit D is transmitted only to the output Y2; and, Y2 = Data. . The best example of 1X4 demultiplexer is IC 74155.
 
- 
- 
-### Procedure
-/* write all the steps invloved */
-
-
-
 ### PROGRAM 
-/*
+```/*
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
+Developed by: Meenakshi M
+RegisterNumber: 212221230057 
 */
-
-
-
-
-
-
+```
+## Multiplexer:
+```
+module mux(I0,I1,I2,I3,S0,S1,Y);
+input I0,I1,I2,I3,S0,S1;
+output Y;
+wire S0C,S1C;
+not(S0C,S0);
+not(S1C,S1);
+wire P,Q,R,S;
+and(P,S0C,S1C,I0);
+and(Q,S0C,S1,I1);
+and(R,S0,S1C,I2);
+and(S,S0,S1,I3);
+or(Y,P,Q,R,S);
+endmodule
+```
 ### RTL LOGIC  
-
-
-
-
-
-
-
+![image](https://user-images.githubusercontent.com/94165108/203111105-ca74e982-671d-4bf2-9539-1237bdec985a.png)
 
 ### TIMING DIGRAMS  
-
-
-
-
+![image](https://user-images.githubusercontent.com/94165108/203111188-b86e2f91-01c8-4d58-869e-28f68d811158.png)
 
 ### TRUTH TABLE 
+![image](https://user-images.githubusercontent.com/94165108/203111249-69389925-0633-444a-9048-bc89685022fc.png)
 
+## DeMultiplexer:
+```
+module demux(I,S0,S1,Y0,Y1,Y2,Y3);
+input I,S0,S1;
+output Y0,Y1,Y2,Y3;
+wire S0C,S1C;
+not(S0C,S0);
+not(S1C,S1);
+and(Y0,I,S0C,S1C);
+and(Y1,I,S0C,S1);
+and(Y2,I,S0,S1C);
+and(Y3,I,S0,S1);
+endmodule
+```
+### RTL LOGIC 
+![image](https://user-images.githubusercontent.com/94165108/203111549-fdccd163-4369-4398-9e61-a71bfb7e1f0a.png)
 
+### TIMING DIGRAMS
+![image](https://user-images.githubusercontent.com/94165108/203111627-622b48c3-038c-45b3-8d6e-2488eab07cad.png)
 
-
-
+### TRUTH TABLE
+![image](https://user-images.githubusercontent.com/94165108/203111724-3a2c3cd1-3554-413a-b592-e61b8d2311d8.png)
 
 ### RESULTS 
+Hence 4x1 Multiplexer and 1x4 Demultiplexer is been implemented and verified using verilog programming and its output are validated.
